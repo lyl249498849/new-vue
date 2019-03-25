@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+        <p>wwwwww</p>
+    </div>
+    <button  id="btn" type="button">回到顶部</button>
+</body>
+</html>
+<script>
+    //防抖代码
+    function debounce(fn,delay){
+        let timer=null;
+        return function(){
+            if(timer){
+                clearTimeout(timer);
+            }
+            timer=setTimeout(fn,delay);
+        }
+    }
+
+    function showTop(){
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        console.log("防抖位置"+scrollTop);
+    }
+    window.onscroll = debounce(showTop,1000);
+
+
+//     window.onscroll = function() {
+//   //为了保证兼容性，这里取两个值，哪个有值取哪一个
+//   //scrollTop就是触发滚轮事件时滚轮的高度
+//   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+//   console.log("滚动距离" + scrollTop);
+// }
+var btn = document.getElementById('btn');
+    btn.onclick=function(){
+        document.body.scrollTop=document.documentElement.scrollTop=0;
+}
+</script>
+<script>
+//节流代码
+function throttle(fn,delay){
+    let valid=true;
+    return function(){
+        if(!valid){
+            return false;
+        }
+        valid=false;
+        setTimeout(()=>{
+           fn();
+           valid=true;
+        },delay)
+    }
+}
+function showTop(){
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        console.log("节流位置"+scrollTop);
+    }
+    window.onscroll = throttle(showTop,1000);
+
+</script>
